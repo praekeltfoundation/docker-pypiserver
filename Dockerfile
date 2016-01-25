@@ -10,5 +10,5 @@ RUN pip install --no-cache-dir pypiserver==1.1.10 passlib watchdog
 VOLUME /packages/ /.htpasswd
 EXPOSE 8080
 
-CMD if [ -f /.htpasswd ]; then PASSWORDS="--passwords /.htpassed"; fi; \
+CMD if [ -f /.htpasswd ]; then PASSWORDS="--passwords /.htpasswd"; fi; \
   pypi-server $PASSWORDS /packages/
