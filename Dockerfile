@@ -5,7 +5,8 @@ RUN pip install virtualenv && \
   virtualenv /virtualenv
 ENV PATH /virtualenv/bin:$PATH
 
-RUN pip install --no-cache-dir pypiserver==1.1.10 passlib watchdog
+ENV PYPISERVER_VERSION "1.2.0"
+RUN pip install --no-cache-dir "pypiserver[passlib,cache]==$PYPISERVER_VERSION"
 
 VOLUME /packages/ /.htpasswd
 EXPOSE 8080
