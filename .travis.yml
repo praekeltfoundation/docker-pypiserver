@@ -6,5 +6,6 @@ services:
 script:
   - docker build -t pypiserver .
   - docker run -d --name pypiserver -p 8080:8080 pypiserver
+  - sleep 5
   - curl -L localhost:8080
   - docker stop pypiserver
