@@ -1,7 +1,7 @@
 # docker-pypiserver
 Dockerfile for running [pypiserver](https://github.com/pypiserver/pypiserver) in a Docker container.
 
-* Base image: [`pypy:2-slim`](https://hub.docker.com/_/pypy/)
+* Base image: [`praekeltfoundation/pypy-base`](https://hub.docker.com/r/praekeltfoundation/pypy-base/)
 * Exposed ports: `8080`
 * Volumes: `/packages/`, `/.htpasswd`
 * Command: `pypi-server`
