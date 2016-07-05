@@ -1,4 +1,4 @@
-FROM pypy:2-slim
+FROM praekeltfoundation/pypy-base
 MAINTAINER Praekelt Foundation <dev@praekeltfoundation.org>
 
 ENV PYPISERVER_VERSION "1.2.0"
