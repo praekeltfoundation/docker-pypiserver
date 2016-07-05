@@ -7,5 +7,6 @@ RUN pip install --no-cache-dir "pypiserver[passlib,cache]==$PYPISERVER_VERSION"
 VOLUME /packages/ /.htpasswd
 EXPOSE 8080
 
-CMD if [ -f /.htpasswd ]; then PASSWORDS="--passwords /.htpasswd"; fi; \
-  pypi-server $PASSWORDS /packages/
+COPY pypiserver-entrypoint.sh /scripts/
+
+CMD ["pypiserver-entrypoint.sh"]
