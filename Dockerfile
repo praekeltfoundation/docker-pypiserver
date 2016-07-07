@@ -1,14 +1,12 @@
-FROM pypy:2-slim
+FROM praekeltfoundation/pypy-base
 MAINTAINER Praekelt Foundation <dev@praekeltfoundation.org>
 
-RUN pip install virtualenv && \
-  virtualenv /virtualenv
-ENV PATH /virtualenv/bin:$PATH
-
-RUN pip install --no-cache-dir pypiserver==1.1.10 passlib watchdog
+ENV PYPISERVER_VERSION "1.2.0"
+RUN pip install --no-cache-dir "pypiserver[passlib,cache]==$PYPISERVER_VERSION"
 
 VOLUME /packages/ /.htpasswd
 EXPOSE 8080
 
-CMD if [ -f /.htpasswd ]; then PASSWORDS="--passwords /.htpasswd"; fi; \
-  pypi-server $PASSWORDS /packages/
+COPY pypiserver-entrypoint.sh /scripts/
+
+CMD ["pypiserver-entrypoint.sh"]
